@@ -14,15 +14,22 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	var velocity := Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	
-	if velocity.x != 0:
-		animated_sprite_2d.animation = "moving_horizontal"
-		animated_sprite_2d.flip_v = false
-		animated_sprite_2d.flip_h = velocity.x < 0
-	elif velocity.y != 0:
-		animated_sprite_2d.animation = "moving_vertical"
-		animated_sprite_2d.flip_v = velocity.y > 0
+	var velocity = Vector2()  # The player's movement vector.
+	if velocity.length() > 0:
+		velocity = velocity.normalized() * speed
+	if Input.is_action_pressed("move_right"):
+		velocity.x += 1
+	if Input.is_action_pressed("move_left"):
+		velocity.x -= 1
+	if Input.is_action_pressed("move_down"):
+		velocity.y += 1
+	if Input.is_action_pressed("move_up"):
+		velocity.y -= 1
+	if velocity.length() > 0:
+		velocity = velocity.normalized() * speed
+	else:
+		animated_sprite_2d.play("idle")
+
 	
 	position += velocity * delta
 	position = position.clamp(Vector2.ZERO, scree_size)
