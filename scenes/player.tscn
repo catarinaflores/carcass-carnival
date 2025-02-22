@@ -1,7 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://doq17ej85g8lc"]
+[gd_scene load_steps=11 format=3 uid="uid://doq17ej85g8lc"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_11lw7"]
 [ext_resource type="Texture2D" uid="uid://bccuhmroftu1u" path="res://icon.svg" id="2_u7gnn"]
+[ext_resource type="Texture2D" uid="uid://b4t4li72pjmw" path="res://art/Poses/female_swim1.png" id="3_dqp6m"]
+[ext_resource type="Texture2D" uid="uid://cwlyyneynl21o" path="res://art/Poses/female_swim2.png" id="4_fgyjp"]
+[ext_resource type="Texture2D" uid="uid://dscujndkryk7p" path="res://art/Poses/female_walk1.png" id="5_ughhp"]
+[ext_resource type="Texture2D" uid="uid://dv0jckcso8cr1" path="res://art/Poses/female_walk2.png" id="6_5knxs"]
+[ext_resource type="Texture2D" uid="uid://d07dewyefwwp5" path="res://art/Poses/female_climb1.png" id="7_m8y88"]
+[ext_resource type="Texture2D" uid="uid://bf87or4ahxor7" path="res://art/Poses/female_climb2.png" id="8_qeha8"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_eik2s"]
 animations = [{
@@ -10,7 +16,40 @@ animations = [{
 "texture": ExtResource("2_u7gnn")
 }],
 "loop": true,
-"name": &"idle",
+"name": &"down_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_dqp6m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_fgyjp")
+}],
+"loop": true,
+"name": &"move_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_ughhp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_5knxs")
+}],
+"loop": true,
+"name": &"move_side",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_m8y88")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_qeha8")
+}],
+"loop": true,
+"name": &"move_up",
 "speed": 5.0
 }, {
 "frames": [{
@@ -18,7 +57,7 @@ animations = [{
 "texture": ExtResource("2_u7gnn")
 }],
 "loop": true,
-"name": &"moving_horizontal",
+"name": &"side_idle",
 "speed": 5.0
 }, {
 "frames": [{
@@ -26,7 +65,7 @@ animations = [{
 "texture": ExtResource("2_u7gnn")
 }],
 "loop": true,
-"name": &"moving_vertical",
+"name": &"up_idle",
 "speed": 5.0
 }]
 
@@ -38,7 +77,7 @@ script = ExtResource("1_11lw7")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_eik2s")
-animation = &"moving_horizontal"
+animation = &"up_idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_a1wv5")

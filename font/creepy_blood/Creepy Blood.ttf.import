@@ -1,0 +1,34 @@
+[remap]
+
+importer="font_data_dynamic"
+type="FontFile"
+uid="uid://blhsj28udnqa3"
+path="res://.godot/imported/Creepy Blood.ttf-28efc39581b2cd9673c016038778223e.fontdata"
+
+[deps]
+
+source_file="res://font/creepy_blood/Creepy Blood.ttf"
+dest_files=["res://.godot/imported/Creepy Blood.ttf-28efc39581b2cd9673c016038778223e.fontdata"]
+
+[params]
+
+Rendering=null
+antialiasing=1
+generate_mipmaps=false
+disable_embedded_bitmaps=true
+multichannel_signed_distance_field=false
+msdf_pixel_range=8
+msdf_size=48
+allow_system_fallback=true
+force_autohinter=false
+hinting=1
+subpixel_positioning=1
+oversampling=0.0
+Fallbacks=null
+fallbacks=[]
+Compress=null
+compress=true
+preload=[]
+language_support={}
+script_support={}
+opentype_features={}
