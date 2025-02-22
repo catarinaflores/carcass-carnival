@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://doq17ej85g8lc"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_11lw7"]
-[ext_resource type="PackedScene" uid="uid://qepndteplllf" path="res://scenes/player_bullet.tscn" id="2_38wxo"]
+[ext_resource type="PackedScene" path="res://scenes/player_bullet.tscn" id="2_38wxo"]
 [ext_resource type="Texture2D" uid="uid://bccuhmroftu1u" path="res://icon.svg" id="2_u7gnn"]
 [ext_resource type="Texture2D" uid="uid://b4t4li72pjmw" path="res://art/Poses/female_swim1.png" id="3_dqp6m"]
 [ext_resource type="Texture2D" uid="uid://cwlyyneynl21o" path="res://art/Poses/female_swim2.png" id="4_fgyjp"]
