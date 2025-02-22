@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://2w47iwrtcfaw"]
 
 [ext_resource type="Script" path="res://scripts/exploding_enemy.gd" id="1_d4fky"]
-[ext_resource type="Texture2D" uid="uid://bccuhmroftu1u" path="res://icon.svg" id="2_0wef1"]
+[ext_resource type="Texture2D" uid="uid://boiw68lx60pn4" path="res://assets/ghosts - Copy.png" id="3_jef4e"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6s6xw"]
 radius = 39.2046
