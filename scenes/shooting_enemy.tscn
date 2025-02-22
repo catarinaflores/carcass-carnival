@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://5gbs7et4h1et"]
 
-[ext_resource type="Script" path="res://shooting_enemy.gd" id="1_qnkbv"]
+[ext_resource type="Script" path="res://scripts/shooting_enemy.gd" id="1_qnkbv"]
 [ext_resource type="Texture2D" uid="uid://cpda3ogsopclg" path="res://assets/palhacos.png" id="2_bjurx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0cd6j"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bxms1j43ew5qo"]
 
-[ext_resource type="Script" path="res://scenes/enemy_bullet.gd" id="1_hs2yg"]
+[ext_resource type="Script" path="res://scripts/enemy_bullet.gd" id="1_hs2yg"]
 [ext_resource type="Texture2D" uid="uid://bfndguef7xu5e" path="res://assets/ranho_smol.png" id="2_xm716"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6e28e"]
