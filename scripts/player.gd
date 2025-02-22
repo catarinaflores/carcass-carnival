@@ -92,6 +92,11 @@ func _shoot() -> void:
 	# Calculate shooting direction towards mouse
 	var mouse_pos = get_global_mouse_position()
 	var direction = (mouse_pos - global_position).normalized()
+	
+	# Set bullet rotation to face direction
+	bullet.rotation = direction.angle()
+	
+	# Shoot the bullet
 	bullet.shoot(direction)
 
 func _update_animation() -> void:
