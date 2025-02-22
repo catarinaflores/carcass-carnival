@@ -5,7 +5,7 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6e28e"]
 
-[node name="EnemyBullet" type="RigidBody2D"]
+[node name="EnemyBullet" type="RigidBody2D" groups=["enemy_projectiles"]]
 gravity_scale = 0.0
 script = ExtResource("1_m8s0q")
 

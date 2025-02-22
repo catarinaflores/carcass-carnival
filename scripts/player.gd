@@ -34,6 +34,15 @@ func _ready() -> void:
 	# Setup shooting timer
 	shoot_timer.wait_time = fire_rate
 	shoot_timer.one_shot = true
+	
+	
+	 # Debug Timer connection
+	print("Timer node reference: ", shoot_timer)
+	print("Timer wait time: ", shoot_timer.wait_time)
+	print("Timer one shot: ", shoot_timer.one_shot)
+	
+	# Verify signal connection
+	print("Timer timeout connected: ", shoot_timer.timeout.get_connections().size() > 0)
 
 func _process(delta: float) -> void:
 	_handle_movement(delta)
@@ -62,6 +71,7 @@ func _handle_shooting() -> void:
 	if Input.is_action_pressed("shoot") and can_shoot:
 		_shoot()
 		can_shoot = false
+		print("Started shoot timer")
 		shoot_timer.start()
 
 func _shoot() -> void:
@@ -105,14 +115,17 @@ func _is_moving() -> bool:
 	return Input.get_vector("move_left", "move_right", "move_up", "move_down").length() > 0
 
 func _on_body_entered(body: Node2D) -> void:
-	# Handle collision with harmful bodies
-	hide()
-	hit.emit()
-	collision_shape.set_deferred("disabled", true)
+	if body.is_in_group("enemy_projectiles"):
+		print("Something hit the player. Auch")
+		# Handle collision with harmful bodies
+		hide()
+		hit.emit()
+		collision_shape.set_deferred("disabled", true)
 	
-	# Wait and return to main menu
-	await get_tree().create_timer(3.0).timeout
-	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+		# Wait and return to main menu
+		await get_tree().create_timer(3.0).timeout
+		get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 
 func _on_shoot_timer_timeout() -> void:
+	print("Timer triggered. Player can shoot")
 	can_shoot = true

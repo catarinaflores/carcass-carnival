@@ -75,6 +75,7 @@ animations = [{
 [node name="Player" type="Area2D"]
 collision_layer = 2
 script = ExtResource("1_11lw7")
+fire_rate = 1.0
 bullet_scene = ExtResource("2_38wxo")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -85,4 +86,7 @@ animation = &"move_up"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_a1wv5")
 
+[node name="Timer" type="Timer" parent="."]
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_shoot_timer_timeout"]
