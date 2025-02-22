@@ -1,7 +1,7 @@
 extends Area2D
 @onready var player: Area2D = $"../Player"
-const XplosionDistance = 10
-var speed = 50
+const XplosionDistance = 100
+var speed = 200
 @onready var explode = preload("res://scenes/explosion.tscn").instantiate()
 
 func _process(delta: float) -> void:

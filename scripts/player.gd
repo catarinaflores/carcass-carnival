@@ -1,73 +1,136 @@
 extends Area2D
 
+# Signals
 signal hit
 
-@export var speed := 400
-var scree_size: Vector2
-@onready var animated_sprite_2d = %AnimatedSprite2D
-@onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
+# Export variables for easy configuration in editor
+@export var speed: float = 400.0
+@export var fire_rate: float = 0.5  # Time between shots in seconds
+@export var bullet_scene: PackedScene  # Assign bullet scene in Inspector
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	scree_size = get_viewport_rect().size
+# Member variables
+var screen_size: Vector2
+var can_shoot: bool = true
+
+# Node references using onready
+@onready var sprite: AnimatedSprite2D = %AnimatedSprite2D
+@onready var collision_shape: CollisionShape2D = $CollisionShape2D
+@onready var shoot_timer: Timer = $Timer
+
+func _ready() -> void:
+	# Initialize screen boundaries
+	screen_size = get_viewport_rect().size
 	
-func _on_body_entered(body: Node2D) -> void:
-	hide()
-	hit.emit()
-	collision_shape_2d.set_deferred("disabled", true)
-	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
-
+	# Verify Timer node
+	if !shoot_timer:
+		push_error("Timer node not found! Please add a Timer node as child of the Player.")
+		return
+		
+	# Print debug info about bullet scene
+	print("Bullet scene status: ", bullet_scene != null)
+	if bullet_scene:
+		print("Bullet scene path: ", bullet_scene.resource_path)
+	
+	# Setup shooting timer
+	shoot_timer.wait_time = fire_rate
+	shoot_timer.one_shot = true
+	
+	
+	 # Debug Timer connection
+	print("Timer node reference: ", shoot_timer)
+	print("Timer wait time: ", shoot_timer.wait_time)
+	print("Timer one shot: ", shoot_timer.one_shot)
+	
+	# Verify signal connection
+	print("Timer timeout connected: ", shoot_timer.timeout.get_connections().size() > 0)
 
 func _process(delta: float) -> void:
-	var velocity = Vector2()  # The player's movement vector.
+	_handle_movement(delta)
+	_handle_shooting()
+	_update_animation()
 
-	# Movement input
-	if Input.is_action_pressed("move_right"):
-		velocity.x += 1
-	if Input.is_action_pressed("move_left"):
-		velocity.x -= 1
-	if Input.is_action_pressed("move_down"):
-		velocity.y += 1
-	if Input.is_action_pressed("move_up"):
-		velocity.y -= 1
+func _handle_movement(delta: float) -> void:
+	# Get input vector
+	var velocity = Vector2.ZERO
+	velocity.x = Input.get_axis("move_left", "move_right")
+	velocity.y = Input.get_axis("move_up", "move_down")
 	
-	# Normalize velocity and apply speed
+	# Normalize and apply speed
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
 	
-	# Apply movement
+	# Update position while keeping within screen bounds
 	position += velocity * delta
-	position = position.clamp(Vector2.ZERO, scree_size)
+	position = position.clamp(Vector2.ZERO, screen_size)
 
-	# Get direction of the mouse relative to player
+func _handle_shooting() -> void:
+	if !bullet_scene:
+		push_warning("Bullet scene is null! Check the Inspector.")
+		return
+		
+	if Input.is_action_pressed("shoot") and can_shoot:
+		_shoot()
+		can_shoot = false
+		print("Started shoot timer")
+		shoot_timer.start()
+
+func _shoot() -> void:
+	# Double check bullet_scene
+	if !is_instance_valid(bullet_scene) or !bullet_scene:
+		push_warning("Bullet scene not set!")
+		return
+		
+	# Create bullet instance
+	var bullet = bullet_scene.instantiate()
+	if !bullet:
+		push_error("Failed to instantiate bullet scene!")
+		return
+		
+	get_parent().add_child(bullet)
+	bullet.global_position = global_position
+	
+	# Calculate shooting direction towards mouse
 	var mouse_pos = get_global_mouse_position()
-	var direction = mouse_pos - position  # Raw direction vector
+	var direction = (mouse_pos - global_position).normalized()
+	
+	# Set bullet rotation to face direction
+	bullet.rotation = direction.angle()
+	
+	# Shoot the bullet
+	bullet.shoot(direction)
 
-	# Ensure direction is always valid
-	if direction.length() > 5:  # Avoid near-zero movement errors
-		direction = direction.normalized()
+func _update_animation() -> void:
+	# Get direction to mouse for character facing
+	var mouse_direction = (get_global_mouse_position() - position).normalized()
+	
+	# Determine animation based on mouse direction
+	if abs(mouse_direction.x) > abs(mouse_direction.y):
+		# Horizontal movement
+		sprite.flip_h = mouse_direction.x < 0
+		sprite.play("move_side" if _is_moving() else "side_idle")
 	else:
-		direction = Vector2.ZERO  # Keep last valid direction (prevents flickering)
+		# Vertical movement
+		if mouse_direction.y < 0:
+			sprite.play("move_up" if _is_moving() else "up_idle")
+		else:
+			sprite.play("move_down" if _is_moving() else "down_idle")
 
-	# Determine animation based on direction & movement
-	if abs(direction.x) > abs(direction.y): 
-		# Horizontal direction (left/right)
-		animated_sprite_2d.flip_h = direction.x < 0  # Flip when facing left
-		if velocity.length() > 0:
-			animated_sprite_2d.play("move_side")
-		else:
-			animated_sprite_2d.play("side_idle")
-	else:
-		# Vertical direction (up/down)
-		if direction.y < 0:
-			# Facing up
-			if velocity.length() > 0:
-				animated_sprite_2d.play("move_up")
-			else:
-				animated_sprite_2d.play("up_idle")
-		else:
-			# Facing down
-			if velocity.length() > 0:
-				animated_sprite_2d.play("move_down")
-			else:
-				animated_sprite_2d.play("down_idle")
+func _is_moving() -> bool:
+	# Helper function to check if player is moving
+	return Input.get_vector("move_left", "move_right", "move_up", "move_down").length() > 0
+
+func _on_body_entered(body: Node2D) -> void:
+	if body.is_in_group("enemy_projectiles"):
+		print("Something hit the player. Auch")
+		# Handle collision with harmful bodies
+		hide()
+		hit.emit()
+		collision_shape.set_deferred("disabled", true)
+	
+		# Wait and return to main menu
+		await get_tree().create_timer(3.0).timeout
+		get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+
+func _on_shoot_timer_timeout() -> void:
+	print("Timer triggered. Player can shoot")
+	can_shoot = true

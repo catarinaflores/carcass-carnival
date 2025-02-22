@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dhd0o1pvbk2xf"]
+[gd_scene load_steps=5 format=3 uid="uid://dhd0o1pvbk2xf"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="2_x3bjg"]
 [ext_resource type="PackedScene" uid="uid://doq17ej85g8lc" path="res://scenes/player.tscn" id="2_yfnri"]
 [ext_resource type="PackedScene" uid="uid://bxb7wwvv2p27r" path="res://scenes/bad_guy_pew_pew.tscn" id="3_26ghi"]
 [ext_resource type="PackedScene" uid="uid://bwqeag2j30v40" path="res://scenes/projectile.tscn" id="3_mpu5m"]
-[ext_resource type="PackedScene" uid="uid://2w47iwrtcfaw" path="res://scenes/exploding_enemy.tscn" id="5_xitqt"]
 
 [node name="MainScene" type="Node2D"]
 
@@ -12,16 +11,9 @@
 position = Vector2(115, 119)
 collision_layer = 1
 script = ExtResource("2_x3bjg")
-speed = 400
 
 [node name="bad_guy_pew_pew" parent="." instance=ExtResource("3_26ghi")]
-visible = false
 position = Vector2(182, 400)
 
 [node name="projectile" parent="." instance=ExtResource("3_mpu5m")]
-visible = false
 position = Vector2(876, 288)
-
-[node name="ExplodingEnemy" parent="." instance=ExtResource("5_xitqt")]
-visible = false
-position = Vector2(403, 218)
