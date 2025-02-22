@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://qxopywd3x55h"]
+
+[ext_resource type="Script" path="res://shooting_enemy.gd" id="1_qnkbv"]
+[ext_resource type="Texture2D" uid="uid://bccuhmroftu1u" path="res://icon.svg" id="2_6i5nq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0cd6j"]
+size = Vector2(118, 120)
+
+[node name="ShootingEnemy" type="Area2D"]
+script = ExtResource("1_qnkbv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_0cd6j")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_6i5nq")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+unique_name_in_owner = true
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
