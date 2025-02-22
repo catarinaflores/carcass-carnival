@@ -15,6 +15,8 @@ func _on_body_entered(body: Node2D) -> void:
 	hide()
 	hit.emit()
 	collision_shape_2d.set_deferred("disabled", true)
+	
+	await get_tree().create_timer(3.0).timeout  # Waits for 3 seconds
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 
 
@@ -76,6 +78,3 @@ func _process(delta: float) -> void:
 func die():
 	# Player death logic here
 	queue_free()  # or handle death differently
-
-func _on_body_entered(body: Node2D) -> void:
-	print("Aiii")
