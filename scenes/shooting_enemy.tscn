@@ -1,10 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://dhknxtx04jo7h"]
+[gd_scene load_steps=4 format=3 uid="uid://5gbs7et4h1et"]
 
 [ext_resource type="Script" path="res://shooting_enemy.gd" id="1_qnkbv"]
-[ext_resource type="Texture2D" uid="uid://bccuhmroftu1u" path="res://icon.svg" id="2_6i5nq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0cd6j"]
 size = Vector2(118, 120)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8cuhl"]
 
 [node name="ShootingEnemy" type="Area2D"]
 script = ExtResource("1_qnkbv")
@@ -12,12 +13,12 @@ script = ExtResource("1_qnkbv")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_0cd6j")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_6i5nq")
-
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_8cuhl")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

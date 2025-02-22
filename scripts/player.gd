@@ -107,13 +107,13 @@ func _update_animation() -> void:
 	if abs(mouse_direction.x) > abs(mouse_direction.y):
 		# Horizontal movement
 		sprite.flip_h = mouse_direction.x < 0
-		sprite.play("move_side" if _is_moving() else "side_idle")
+		sprite.play("right" if _is_moving() else "right")
 	else:
 		# Vertical movement
 		if mouse_direction.y < 0:
-			sprite.play("move_up" if _is_moving() else "up_idle")
+			sprite.play("back" if _is_moving() else "back")
 		else:
-			sprite.play("move_down" if _is_moving() else "down_idle")
+			sprite.play("front" if _is_moving() else "front")
 
 func _is_moving() -> bool:
 	# Helper function to check if player is moving
