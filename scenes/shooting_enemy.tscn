@@ -1,11 +1,91 @@
-[gd_scene load_steps=4 format=3 uid="uid://5gbs7et4h1et"]
+[gd_scene load_steps=14 format=3 uid="uid://5gbs7et4h1et"]
 
 [ext_resource type="Script" path="res://shooting_enemy.gd" id="1_qnkbv"]
+[ext_resource type="Texture2D" uid="uid://cpda3ogsopclg" path="res://assets/palhacos.png" id="2_bjurx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0cd6j"]
 size = Vector2(118, 120)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_m87bf"]
+atlas = ExtResource("2_bjurx")
+region = Rect2(0, 1494, 467, 747)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5vxsr"]
+atlas = ExtResource("2_bjurx")
+region = Rect2(467, 1494, 467, 747)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tbe5w"]
+atlas = ExtResource("2_bjurx")
+region = Rect2(934, 1494, 467, 747)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q5c8y"]
+atlas = ExtResource("2_bjurx")
+region = Rect2(0, 0, 467, 747)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_44c01"]
+atlas = ExtResource("2_bjurx")
+region = Rect2(467, 0, 467, 747)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4puji"]
+atlas = ExtResource("2_bjurx")
+region = Rect2(934, 0, 467, 747)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qr5uf"]
+atlas = ExtResource("2_bjurx")
+region = Rect2(0, 747, 467, 747)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dseuh"]
+atlas = ExtResource("2_bjurx")
+region = Rect2(467, 747, 467, 747)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qcnih"]
+atlas = ExtResource("2_bjurx")
+region = Rect2(934, 747, 467, 747)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_8cuhl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m87bf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5vxsr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tbe5w")
+}],
+"loop": true,
+"name": &"back",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q5c8y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_44c01")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4puji")
+}],
+"loop": true,
+"name": &"front",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qr5uf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dseuh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qcnih")
+}],
+"loop": true,
+"name": &"side",
+"speed": 5.0
+}]
 
 [node name="ShootingEnemy" type="Area2D"]
 script = ExtResource("1_qnkbv")
@@ -18,7 +98,11 @@ shape = SubResource("RectangleShape2D_0cd6j")
 [node name="Timer" type="Timer" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+scale = Vector2(0.0995951, 0.0995951)
 sprite_frames = SubResource("SpriteFrames_8cuhl")
+animation = &"back"
+frame_progress = 0.395555
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

@@ -99,7 +99,7 @@ animations = [{
 "speed": 15.0
 }]
 
-[node name="Explosion" type="RigidBody2D"]
+[node name="Explosion" type="RigidBody2D" groups=["enemy_projectiles"]]
 collision_mask = 2
 gravity_scale = 0.0
 script = ExtResource("1_q0a22")
