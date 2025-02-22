@@ -1,13 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://c07prv7c46n4t"]
+[gd_scene load_steps=4 format=3 uid="uid://c07prv7c46n4t"]
 
 [ext_resource type="Texture2D" uid="uid://bccuhmroftu1u" path="res://icon.svg" id="1_keal7"]
 [ext_resource type="Script" path="res://scripts/explosion.gd" id="1_q0a22"]
-[ext_resource type="PackedScene" uid="uid://betli4gj52glt" path="res://scenes/enemy_hitbox.tscn" id="3_q05k4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7qdh1"]
 radius = 113.442
 
-[node name="Explosion" type="Area2D"]
+[node name="Explosion" type="RigidBody2D"]
 collision_mask = 2
 script = ExtResource("1_q0a22")
 
@@ -19,9 +18,7 @@ texture = ExtResource("1_keal7")
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
 
-[node name="EnemyHitbox" parent="." instance=ExtResource("3_q05k4")]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_7qdh1")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
