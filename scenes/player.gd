@@ -33,3 +33,6 @@ func _process(delta: float) -> void:
 	
 	position += velocity * delta
 	position = position.clamp(Vector2.ZERO, scree_size)
+	
+	var mouse_pos = get_global_mouse_position()
+	rotation = (mouse_pos - position).angle()
