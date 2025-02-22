@@ -12,6 +12,7 @@
 position = Vector2(115, 119)
 collision_layer = 1
 script = ExtResource("2_x3bjg")
+speed = 400
 
 [node name="bad_guy_pew_pew" parent="." instance=ExtResource("3_26ghi")]
 visible = false
