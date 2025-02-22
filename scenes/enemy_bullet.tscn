@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://de6lbs0aorgpe"]
+
+[ext_resource type="Script" path="res://scenes/enemy_bullet.gd" id="1_m8s0q"]
+[ext_resource type="Texture2D" uid="uid://bccuhmroftu1u" path="res://icon.svg" id="1_wo3nd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6e28e"]
+
+[node name="EnemyBullet" type="RigidBody2D"]
+gravity_scale = 0.0
+script = ExtResource("1_m8s0q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_6e28e")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_wo3nd")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

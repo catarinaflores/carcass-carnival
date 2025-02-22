@@ -81,7 +81,6 @@ sprite_frames = SubResource("SpriteFrames_eik2s")
 animation = &"move_up"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(4.76786, 3.68333)
 shape = SubResource("CapsuleShape2D_a1wv5")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
