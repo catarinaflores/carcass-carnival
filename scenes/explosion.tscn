@@ -8,6 +8,7 @@ radius = 113.442
 
 [node name="Explosion" type="RigidBody2D"]
 collision_mask = 2
+gravity_scale = 0.0
 script = ExtResource("1_q0a22")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

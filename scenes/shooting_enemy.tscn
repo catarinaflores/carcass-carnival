@@ -1,15 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://qxopywd3x55h"]
+[gd_scene load_steps=4 format=3 uid="uid://dhknxtx04jo7h"]
 
 [ext_resource type="Script" path="res://shooting_enemy.gd" id="1_qnkbv"]
 [ext_resource type="Texture2D" uid="uid://bccuhmroftu1u" path="res://icon.svg" id="2_6i5nq"]
-[ext_resource type="PackedScene" uid="uid://de6lbs0aorgpe" path="res://scenes/enemy_bullet.tscn" id="2_xme1f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0cd6j"]
 size = Vector2(118, 120)
 
 [node name="ShootingEnemy" type="Area2D"]
 script = ExtResource("1_qnkbv")
-bullet_scene = ExtResource("2_xme1f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_0cd6j")
@@ -18,9 +16,9 @@ shape = SubResource("RectangleShape2D_0cd6j")
 texture = ExtResource("2_6i5nq")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-unique_name_in_owner = true
 
 [node name="Timer" type="Timer" parent="."]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
