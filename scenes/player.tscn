@@ -80,4 +80,5 @@ sprite_frames = SubResource("SpriteFrames_eik2s")
 animation = &"up_idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(4.76786, 3.68333)
 shape = SubResource("CapsuleShape2D_a1wv5")
