@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ddda0h6ric2ny"
+path="res://.godot/imported/ENEMY 2 DIES.wav-997041901b9b9a27dcb4325e8a8a304d.sample"
+
+[deps]
+
+source_file="res://assets/sounds/ENEMY 2 DIES.wav"
+dest_files=["res://.godot/imported/ENEMY 2 DIES.wav-997041901b9b9a27dcb4325e8a8a304d.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

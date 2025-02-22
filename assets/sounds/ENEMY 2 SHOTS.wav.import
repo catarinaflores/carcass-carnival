@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b83vtymh3cvsf"
+path="res://.godot/imported/ENEMY 2 SHOTS.wav-9912cfdba27f817de6584d8c5f64a893.sample"
+
+[deps]
+
+source_file="res://assets/sounds/ENEMY 2 SHOTS.wav"
+dest_files=["res://.godot/imported/ENEMY 2 SHOTS.wav-9912cfdba27f817de6584d8c5f64a893.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

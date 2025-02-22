@@ -1,8 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://c07prv7c46n4t"]
+[gd_scene load_steps=19 format=3 uid="uid://b6b88e40mghso"]
 
 [ext_resource type="Script" path="res://scripts/explosion.gd" id="1_q0a22"]
 [ext_resource type="Texture2D" uid="uid://s3eapcucvk13" path="res://assets/boom.png" id="2_j41yy"]
 [ext_resource type="Texture2D" uid="uid://r8dch55ombbl" path="res://assets/Explosion.png" id="3_4f2wv"]
+[ext_resource type="AudioStream" uid="uid://dmfdekhdjd5p5" path="res://assets/sounds/ENEMY 1 EXPLOSION.wav" id="4_3i6ux"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7qdh1"]
 radius = 113.442
@@ -111,7 +112,7 @@ scale = Vector2(1.64062, 1.53125)
 texture = ExtResource("2_j41yy")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_7qdh1")
@@ -124,5 +125,9 @@ animation = &"explosion"
 autoplay = "explosion"
 frame = 11
 frame_progress = 1.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("4_3i6ux")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

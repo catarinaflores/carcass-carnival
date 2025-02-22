@@ -98,6 +98,8 @@ func _shoot() -> void:
 	
 	# Shoot the bullet
 	bullet.shoot(direction)
+	
+	$AudioStreamPlayerDarts.play()
 
 func _update_animation() -> void:
 	# Get direction to mouse for character facing
@@ -126,6 +128,8 @@ func _on_body_entered(body: Node2D) -> void:
 		hide()
 		hit.emit()
 		collision_shape.set_deferred("disabled", true)
+		
+		$AudioStreamPlayer2D.play()
 	
 		# Wait and return to main menu
 		await get_tree().create_timer(3.0).timeout

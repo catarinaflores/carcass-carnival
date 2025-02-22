@@ -75,6 +75,8 @@ func _shoot() -> void:
 	
 	# Shoot the bullet
 	bullet.shoot(bullet_direction)
+	
+	$"AudioStreamPlayer2D".play()
 
 
 #func _shoot():
