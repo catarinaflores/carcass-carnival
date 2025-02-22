@@ -71,11 +71,3 @@ func _process(delta: float) -> void:
 				animated_sprite_2d.play("move_down")
 			else:
 				animated_sprite_2d.play("down_idle")
-
-
-func die():
-	# Player death logic here
-	queue_free()  # or handle death differently
-
-func _on_body_entered(body: Node2D) -> void:
-	print("Aiii")
