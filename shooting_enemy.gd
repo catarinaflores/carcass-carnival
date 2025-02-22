@@ -7,6 +7,9 @@ extends Area2D
 @onready var timer = $Timer
 @onready var visible_on_screen_notifier_2d = $VisibleOnScreenNotifier2D
 @onready var bullet = preload("res://scenes/enemy_bullet.tscn").instantiate()
+
+@onready var sprite: AnimatedSprite2D = %AnimatedSprite2D
+
 var direction := Vector2.ZERO
 
 func _ready():
@@ -15,8 +18,26 @@ func _ready():
 	timer.wait_time = fire_rate
 	timer.start()
 
-func _process(delta):
+func _process(delta: float) -> void:
+	var move_direction = (player.position - position).normalized()
 	position += direction * speed * delta
+
+	_update_animation(move_direction)
+
+func _update_animation(move_direction: Vector2) -> void:
+	if move_direction == Vector2.ZERO:
+		return # Don't change animation if not moving
+
+	if abs(move_direction.x) > abs(move_direction.y):
+		# Moving horizontally
+		sprite.flip_h = move_direction.x < 0
+		#sprite.play("side")
+	else:
+		# Moving vertically
+		if move_direction.y < 0:
+			sprite.play("back")
+		else:
+			sprite.play("front")
 
 # Pick a new random movement direction
 func _choose_random_direction():
