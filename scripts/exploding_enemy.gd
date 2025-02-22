@@ -34,7 +34,7 @@ func _update_animation(move_direction: Vector2) -> void:
 	if abs(move_direction.x) > abs(move_direction.y):
 		# Moving horizontally
 		sprite.flip_h = move_direction.x < 0
-		sprite.play("side")
+		#sprite.play("side")
 	else:
 		# Moving vertically
 		if move_direction.y < 0:
