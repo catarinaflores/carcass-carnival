@@ -53,7 +53,7 @@ func _shoot() -> void:
 	print("shoot")
 	
 	# Preload bullet scene
-	var bullet_scene = preload("res://scenes/ranho.tscn")
+	var bullet_scene = preload("res://scenes/enemy_bullet.tscn")
 	var bullet = bullet_scene.instantiate()
 	
 	if !bullet:

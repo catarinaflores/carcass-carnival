@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=4 uid="uid://dx3ee4l4ufpmi"]
 
 [ext_resource type="PackedScene" uid="uid://doq17ej85g8lc" path="res://scenes/player.tscn" id="1_krjnr"]
-[ext_resource type="Script" path="res://scenes/main_scene.gd" id="1_nj5lf"]
+[ext_resource type="Script" path="res://scripts/main_scene.gd" id="1_nj5lf"]
 [ext_resource type="PackedScene" uid="uid://2w47iwrtcfaw" path="res://scenes/exploding_enemy.tscn" id="2_s04cj"]
 [ext_resource type="PackedScene" uid="uid://5gbs7et4h1et" path="res://scenes/shooting_enemy.tscn" id="3_6rm81"]
 [ext_resource type="AudioStream" uid="uid://c11kq033w2naj" path="res://assets/sounds/BG MUSIC.wav" id="5_1105y"]
