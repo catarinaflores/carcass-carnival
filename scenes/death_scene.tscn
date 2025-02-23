@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://d4n105ejmd8l0"]
+
+[node name="death_scene" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_right = 55.0
+offset_bottom = 23.0
+text = "U dead"

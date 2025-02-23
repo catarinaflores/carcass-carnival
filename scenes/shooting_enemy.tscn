@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cpda3ogsopclg" path="res://assets/palhacos.png" id="2_bjurx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0cd6j"]
-size = Vector2(118, 120)
+size = Vector2(48.6241, 76.775)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m87bf"]
 atlas = ExtResource("2_bjurx")
@@ -93,10 +93,13 @@ format = 1
 stereo = true
 
 [node name="ShootingEnemy" type="Area2D"]
+scale = Vector2(1.17226, 1.17226)
 collision_mask = 4
 script = ExtResource("1_qnkbv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.27958, 1.70611)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_0cd6j")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]

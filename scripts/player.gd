@@ -124,16 +124,47 @@ func _is_moving() -> bool:
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemy_projectiles"):
 		print("Something hit the player. Auch")
-		# Handle collision with harmful bodies
-		hide()
-		hit.emit()
-		collision_shape.set_deferred("disabled", true)
-		
-		$AudioStreamPlayer2D.play()
+		handle_death()
+
+func handle_death() -> void:
+	# Disable player movement
+	set_process(false)
+	set_physics_process(false)
+	set_process_input(false)
 	
-		# Wait and return to main menu
-		await get_tree().create_timer(3.0).timeout
-		get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+	# Hide player and disable collision
+	hide()
+	hit.emit()
+	collision_shape.set_deferred("disabled", true)
+
+	# Play death sound
+	$AudioStreamPlayer2D.play()
+
+	# Stop enemies from shooting at the player
+	get_tree().call_group("enemies", "stop_shooting")
+
+	# Wait for sound to finish
+	await get_tree().create_timer(1.5).timeout  
+
+	# Change to death scene
+	#get_tree().change_scene_to_file("res://scenes/death_scene.tscn")
+
+	# Wait before transitioning to main menu
+	await get_tree().create_timer(3.0).timeout  
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+	
+	# Restore player when returning to menu
+	reset_player()
+
+func reset_player() -> void:
+	# Enable player processing
+	set_process(true)
+	set_physics_process(true)
+	set_process_input(true)
+
+	# Show player and enable collision
+	show()
+	collision_shape.set_deferred("disabled", false)
 
 func _on_shoot_timer_timeout() -> void:
 	print("Timer triggered. Player can shoot")

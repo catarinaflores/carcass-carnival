@@ -48,6 +48,7 @@ animations = [{
 }]
 
 [node name="ExplodingEnemy" type="Area2D"]
+scale = Vector2(0.628895, 0.628895)
 collision_mask = 4
 script = ExtResource("1_d4fky")
 
