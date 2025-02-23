@@ -1,7 +1,7 @@
 extends RigidBody2D
 
-@export var speed := 300  # Adjust bullet speed as needed
-@export var lifetime := 3.0  # Bullet disappears after this time
+@export var speed := 800  # Adjust bullet speed as needed
+@export var lifetime := 1.0  # Bullet disappears after this time
 
 func _ready():
 	# Automatically delete the bullet after a set time

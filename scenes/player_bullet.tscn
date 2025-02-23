@@ -4,24 +4,29 @@
 [ext_resource type="Texture2D" uid="uid://dymqugyacuvap" path="res://assets/dart.png" id="2_tk1jm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6e28e"]
+size = Vector2(29, 3)
 
-[node name="EnemyBullet" type="RigidBody2D"]
+[node name="PlayerBullet" type="RigidBody2D"]
 collision_layer = 5
 collision_mask = 5
 gravity_scale = 0.0
 script = ExtResource("1_cdiwx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(9.5, 0.5)
 shape = SubResource("RectangleShape2D_6e28e")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-rotation = -2.34599
-scale = Vector2(0.159904, 0.159904)
+position = Vector2(10, 3)
+rotation = -0.00337672
+scale = Vector2(0.0248667, 0.0248667)
 texture = ExtResource("2_tk1jm")
 
 [node name="Timer" type="Timer" parent="."]
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(11, 0)
+scale = Vector2(1.02877, 0.198073)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
