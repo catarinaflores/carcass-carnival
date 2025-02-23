@@ -48,6 +48,7 @@ animations = [{
 }]
 
 [node name="ExplodingEnemy" type="Area2D"]
+collision_mask = 4
 script = ExtResource("1_d4fky")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -59,3 +60,5 @@ unique_name_in_owner = true
 scale = Vector2(0.120313, 0.120313)
 sprite_frames = SubResource("SpriteFrames_7neyr")
 animation = &"front"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

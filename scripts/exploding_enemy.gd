@@ -41,3 +41,7 @@ func _update_animation(move_direction: Vector2) -> void:
 			sprite.play("back")
 		else:
 			sprite.play("front")
+
+
+func _on_body_entered(body: Node2D) -> void:
+	queue_free()
