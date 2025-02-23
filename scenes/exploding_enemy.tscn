@@ -3,8 +3,9 @@
 [ext_resource type="Script" path="res://scripts/exploding_enemy.gd" id="1_d4fky"]
 [ext_resource type="Texture2D" uid="uid://boiw68lx60pn4" path="res://assets/ghosts - Copy.png" id="3_jef4e"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_6s6xw"]
-radius = 39.2046
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m275b"]
+radius = 34.0
+height = 94.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gb58l"]
 atlas = ExtResource("3_jef4e")
@@ -54,11 +55,12 @@ script = ExtResource("1_d4fky")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 3)
-shape = SubResource("CircleShape2D_6s6xw")
+shape = SubResource("CapsuleShape2D_m275b")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
-scale = Vector2(0.120313, 0.120313)
+position = Vector2(1.52588e-05, -1.90735e-06)
+scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_7neyr")
 animation = &"front"
 

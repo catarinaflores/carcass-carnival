@@ -117,6 +117,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a1wv5"]
+radius = 22.0
+height = 70.0
 
 [node name="Player" type="Area2D"]
 collision_layer = 2
@@ -126,7 +128,7 @@ bullet_scene = ExtResource("2_38wxo")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
-scale = Vector2(0.112349, 0.112349)
+scale = Vector2(0.07, 0.07)
 sprite_frames = SubResource("SpriteFrames_0uwix")
 animation = &"right"
 frame_progress = 0.895142

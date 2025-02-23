@@ -3,14 +3,17 @@
 [ext_resource type="Script" path="res://scripts/enemy_bullet.gd" id="1_m8s0q"]
 [ext_resource type="Texture2D" uid="uid://bfndguef7xu5e" path="res://assets/ranho_smol.png" id="2_aeppo"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6e28e"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iju82"]
+radius = 10.9999
+height = 37.9998
 
 [node name="EnemyBullet" type="RigidBody2D" groups=["enemy_projectiles"]]
 gravity_scale = 0.0
 script = ExtResource("1_m8s0q")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_6e28e")
+rotation = -1.57419
+shape = SubResource("CapsuleShape2D_iju82")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = 0.00456762
@@ -20,6 +23,7 @@ texture = ExtResource("2_aeppo")
 [node name="Timer" type="Timer" parent="."]
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+scale = Vector2(1.7, 1)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
