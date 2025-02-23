@@ -3,8 +3,14 @@
 [ext_resource type="Script" path="res://scripts/shooting_enemy.gd" id="1_qnkbv"]
 [ext_resource type="Texture2D" uid="uid://cpda3ogsopclg" path="res://assets/palhacos.png" id="2_bjurx"]
 
+<<<<<<< Updated upstream
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0cd6j"]
 size = Vector2(48.6241, 76.775)
+=======
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c0dow"]
+radius = 22.0
+height = 86.0
+>>>>>>> Stashed changes
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m87bf"]
 atlas = ExtResource("2_bjurx")
@@ -98,16 +104,24 @@ collision_mask = 4
 script = ExtResource("1_qnkbv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+<<<<<<< Updated upstream
 position = Vector2(-1.27958, 1.70611)
 scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_0cd6j")
+=======
+position = Vector2(-1, 1)
+shape = SubResource("CapsuleShape2D_c0dow")
+>>>>>>> Stashed changes
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-0.999999, 0.999998)
+scale = Vector2(2.2, 3.6)
 
 [node name="Timer" type="Timer" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
+position = Vector2(-1.52588e-05, 1)
 scale = Vector2(0.0995951, 0.0995951)
 sprite_frames = SubResource("SpriteFrames_8cuhl")
 animation = &"back"
