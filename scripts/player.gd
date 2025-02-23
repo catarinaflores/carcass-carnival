@@ -61,6 +61,7 @@ func _handle_movement(delta: float) -> void:
 	
 	# Update position while keeping within screen bounds
 	position += velocity * delta
+	print(screen_size)
 	position = position.clamp(Vector2.ZERO, screen_size)
 
 func _handle_shooting() -> void:

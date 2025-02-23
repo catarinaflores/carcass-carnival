@@ -1,13 +1,12 @@
-[gd_scene load_steps=18 format=4 uid="uid://dx3ee4l4ufpmi"]
+[gd_scene load_steps=17 format=4 uid="uid://dx3ee4l4ufpmi"]
 
 [ext_resource type="PackedScene" uid="uid://doq17ej85g8lc" path="res://scenes/player.tscn" id="1_krjnr"]
 [ext_resource type="Script" path="res://scripts/main_scene.gd" id="1_nj5lf"]
-[ext_resource type="PackedScene" uid="uid://2w47iwrtcfaw" path="res://scenes/exploding_enemy.tscn" id="2_s04cj"]
-[ext_resource type="PackedScene" uid="uid://5gbs7et4h1et" path="res://scenes/shooting_enemy.tscn" id="3_6rm81"]
 [ext_resource type="AudioStream" uid="uid://c11kq033w2naj" path="res://assets/sounds/BG MUSIC.wav" id="5_1105y"]
 [ext_resource type="Texture2D" uid="uid://y6eg11jrjkhj" path="res://assets/tiles/craftpix-net-695666-free-undead-tileset-top-down-pixel-art/PNG/Ground_rocks.png" id="6_nhudf"]
 [ext_resource type="Texture2D" uid="uid://cvpd1gta2vrm8" path="res://assets/tiles/Ground.png" id="7_8lrbf"]
 [ext_resource type="PackedScene" uid="uid://cs5106emhgt2c" path="res://scenes/spawner.tscn" id="8_6vx81"]
+[ext_resource type="Texture2D" uid="uid://blqjoexyx61vw" path="res://assets/tiles/back.png" id="9_8mc6p"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3ers3"]
 texture = ExtResource("6_nhudf")
@@ -1142,23 +1141,18 @@ sources/2 = SubResource("TileSetAtlasSource_44hqa")
 script = ExtResource("1_nj5lf")
 
 [node name="Player" parent="." instance=ExtResource("1_krjnr")]
-position = Vector2(184, 102)
+position = Vector2(565, 312)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(3.05176e-05, 1.52588e-05)
 scale = Vector2(1.20732, 1.20732)
-
-[node name="ExplodingEnemy" parent="." instance=ExtResource("2_s04cj")]
-position = Vector2(956, 280)
-
-[node name="ShootingEnemy" parent="." instance=ExtResource("3_6rm81")]
-position = Vector2(538, 413)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_1105y")
 autoplay = true
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
+visible = false
 z_index = -11
 position = Vector2(617, 370)
 scale = Vector2(1.83051, 1.64523)
@@ -1187,3 +1181,42 @@ scale = Vector2(3.24867, 3.24867)
 [node name="Spawner2" parent="." instance=ExtResource("8_6vx81")]
 position = Vector2(85, 370)
 scale = Vector2(3.24867, 3.24867)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -5
+position = Vector2(888.747, 19.1609)
+scale = Vector2(0.707606, 0.707606)
+texture = ExtResource("9_8mc6p")
+
+[node name="Sprite2D5" type="Sprite2D" parent="."]
+z_index = -5
+position = Vector2(-734.253, 13.1609)
+scale = Vector2(0.707606, 0.707606)
+texture = ExtResource("9_8mc6p")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+z_index = -5
+position = Vector2(889.747, 1160.16)
+rotation = 3.14159
+scale = Vector2(0.707606, 0.707606)
+texture = ExtResource("9_8mc6p")
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+z_index = -5
+position = Vector2(2505.75, 1159.16)
+rotation = 3.14159
+scale = Vector2(0.707606, 0.707606)
+texture = ExtResource("9_8mc6p")
+
+[node name="Sprite2D6" type="Sprite2D" parent="."]
+z_index = -5
+position = Vector2(-729.253, 1153.16)
+rotation = 3.14159
+scale = Vector2(0.707606, 0.707606)
+texture = ExtResource("9_8mc6p")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+z_index = -5
+position = Vector2(2511.75, 26.1609)
+scale = Vector2(0.707606, 0.707606)
+texture = ExtResource("9_8mc6p")
